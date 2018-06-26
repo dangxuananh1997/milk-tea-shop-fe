@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
+import { Account } from '../../../account/models/account';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  user: Account;
+  username: string;
+  password: string;
+  
   constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit() {
@@ -18,6 +22,26 @@ export class LoginComponent implements OnInit {
     this.accountService.loginAdmin();
     this.router.navigate(['/admin-home']);
   }
+  
+  setUsername(username: string): void {
+    console.log(username);
+    this.username = username;
+  }
+
+  setPassword(password: string): void {
+    console.log(password);
+    this.password = password;
+  }
+
+  submitted = false;
+  
+  onSubmitted() {
+    this.submitted = true;
+  }
+
+  // get diagnostic() {
+  //   return JSON.stringify(this.user);
+  // }
 
   // loginUser(): void {
   //   this.accountService.loginUser();
