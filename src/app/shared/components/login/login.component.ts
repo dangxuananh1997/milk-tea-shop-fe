@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
-import { Account } from '../../../account/models/account';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +8,6 @@ import { Account } from '../../../account/models/account';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user: Account;
   username: string;
   password: string;
   
@@ -19,8 +17,8 @@ export class LoginComponent implements OnInit {
   }
 
   loginAdmin(): void {
-    this.accountService.loginAdmin();
-    this.router.navigate(['/admin-home']);
+    // this.accountService.loginAdmin();
+    // this.router.navigate(['/admin-home']);
   }
   
   setUsername(username: string): void {

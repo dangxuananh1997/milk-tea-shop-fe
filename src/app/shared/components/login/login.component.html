@@ -1,7 +1,7 @@
 <div class="login-container">
   <form class="login-form" id="login-form" #loginForm="ngForm">
     <div class="form-row align-items-center">
-      <img src="../../../../assets/images/logo-milk-tea.png" class="logo">
+      <img src="assets/images/logo-milk-tea.png" class="logo">
       <label class="sr-only" for="username">Username</label>
       <div class="input-group mb-2 text-center boxshadow no-padding">
         <div class="input-group-prepend">
@@ -9,16 +9,8 @@
             <i class="fa fa-user"></i>
           </div>
         </div>
-        <input type="text" name="username" class="form-control" required minlength="4" placeholder="Username" [ngModel]="" #name="ngModel"
-          (keyup)="setUsername(name.value)">
-      </div>
-      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger boxshadow col-12 text-center">
-        <div *ngIf="name?.errors.required">
-          Name is required.
-        </div>
-        <div *ngIf="name?.errors.minlength">
-          Name must be at least 4 characters long.
-        </div>
+        <input type="text" name="username" class="form-control" required placeholder="Username" [ngModel]="" #username="ngModel"
+          (blur)="setUsername(username.value)">
       </div>
       <label class="sr-only" for="password">Password</label>
       <div class="input-group mb-2 text-center boxshadow no-padding">
@@ -27,15 +19,16 @@
             <i class="fa fa-lock"></i>
           </div>
         </div>
-        <input type="password" name="password" class="form-control" required minlength="6" placeholder="Password" [ngModel]="" #password="ngModel"
-          (keyup)="setPassword(password.value)">
+        <input type="password" name="password" class="form-control" required placeholder="Password" [ngModel]="" #password="ngModel"
+          (blur)="setPassword(password.value)">
       </div>
-      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger boxshadow col-12 text-center">
-        <div *ngIf="password?.errors.required">
-          Password is required.
+      <div class="alert alert-danger boxshadow col-12 text-center"
+        *ngIf="password.invalid && (password.dirty || password.touched) || username.invalid && (username.dirty || username.touched)">
+        <div *ngIf="username?.errors != null && username?.errors.required != null && (username.dirty || username.touched)">
+          Username is required
         </div>
-        <div *ngIf="password?.errors.minlength">
-          Password must be at least 6 characters long.
+        <div *ngIf="password?.errors != null && password?.errors.required != null && (password.dirty || password.touched)">
+          Password is required.
         </div>
       </div>
       <button type="submit" class="btn boxshadow text-center" (click)="loginAdmin()">Login</button>
