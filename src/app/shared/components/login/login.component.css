@@ -1,48 +1,48 @@
 .login-container {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    height: 300px;
-    width: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 300px;
+  width: 300px;
 }
 
 .logo {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 170px;
-    z-index: 10;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 170px;
+  z-index: 10;
+  transform: translate(-50%, -50%);
 }
 
 .login-form {
-    border: 2px solid white !important;
-    border-radius: 5px;
-    padding: 70px 20px 30px 20px;
+  border: 2px solid white !important;
+  border-radius: 5px;
+  padding: 70px 20px 30px 20px;
 }
 
 .fa {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .fa-lock {
-    padding-right: 1.5px;
+  padding-right: 1.5px;
 }
 
 .forgot-password a{
-    font-style: italic;
-    text-decoration: none;
+  font-style: italic;
+  text-decoration: none;
 }
 
 .boxshadow {
-    box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777;
 }
 
 button.btn {
-    background-color: #fff;
-    margin: auto;
-    margin-top: 10px;
+  background-color: #fff;
+  margin: auto;
+  margin-top: 10px;
 }
 
 .ng-valid[required], .ng-valid.required, input.ng-invalid.ng-untouched  {
@@ -51,4 +51,8 @@ button.btn {
 
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
+}
+
+input:focus {
+  border-left: 5px solid #a94442 !; /* red */
 }
