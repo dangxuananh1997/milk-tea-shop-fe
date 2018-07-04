@@ -1,0 +1,15 @@
+i.fa {
+  padding-right: 5px;
+}
+
+div.input-group-text::before {
+  content: "\f002";
+  font-family: FontAwesome;
+  padding-right: 5px;
+}
+
+div.search-input {
+  background: #428bca;
+  color: white;
+  border: none;
+}

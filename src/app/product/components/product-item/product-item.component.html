@@ -1,0 +1,15 @@
+<div class="row text-center">
+  <div class="col-1 col">
+  <p>{{product.Id}}</p>
+  </div>
+  <div class="col-3 col">
+   <img src="{{product.Picture}}" alt="image" class="product-image">
+  </div>
+  <div class="col-3 col">
+   <p>{{product.ProductName}}</p>
+  </div>
+  <div class="col-5 col">
+    <button class="btn btn-primary mr-3" (click)="edit()">Update</button>
+    <button class="btn btn-danger" (click)="delete()">Delete</button>
+  </div>
+</div>

@@ -64,3 +64,7 @@ div.side-bar a.btn {
   text-decoration: none;
   margin-bottom: 5px;
 }
+
+div.content-card {
+  padding: 20px;
+}
