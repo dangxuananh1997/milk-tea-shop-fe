@@ -18,3 +18,11 @@ img.product-image {
   width: 50%;
   height: auto;
 }
+div.card {
+  margin-bottom: 30px !important;
+}
+div.card-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}

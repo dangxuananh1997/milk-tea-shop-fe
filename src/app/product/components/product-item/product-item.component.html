@@ -1,15 +1,14 @@
-<div class="row text-center">
-  <div class="col-1 col">
-  <p>{{product.Id}}</p>
+<div class="card flex-row flex-wrap">
+  <div class="card-header border-0">
+    <img src="{{product.Picture}}" alt="">
   </div>
-  <div class="col-3 col">
-   <img src="{{product.Picture}}" alt="image" class="product-image">
-  </div>
-  <div class="col-3 col">
-   <p>{{product.ProductName}}</p>
-  </div>
-  <div class="col-5 col">
-    <button class="btn btn-primary mr-3" (click)="edit()">Update</button>
-    <button class="btn btn-danger" (click)="delete()">Delete</button>
-  </div>
+  <div class="card-block px-2">
+    <h4 class="card-title">{{product.ProductName}}</h4>
+    <p class="card-text">Id: {{product.Id}} Lorem ipsum dolor sit amet.</p>
+    <div class="group-button">
+      <button class="btn btn-primary mr-3" (click)="edit()">Update</button>
+      <button class="btn btn-danger" (click)="delete()">Delete</button>
+    </div>
+    </div>
+  <div class="w-100"></div>
 </div>
