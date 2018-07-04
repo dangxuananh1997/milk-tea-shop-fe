@@ -6,18 +6,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AccountService } from './services/account.service';
-import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { RoutingModule } from '../routing/routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    RoutingModule
   ],
   declarations: [
     LoginComponent,
-    HomeComponent,
-    AdminHomeComponent
+    HomeComponent
   ],
   exports: [
     LoginComponent

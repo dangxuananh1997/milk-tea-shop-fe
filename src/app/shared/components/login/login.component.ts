@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
   }
 
   loginAdmin(): void {
-    // this.accountService.loginAdmin();
-    // this.router.navigate(['/admin-home']);
+    this.accountService.loginAdmin();
+    this.router.navigate(['/home']);
   }
   
   setUsername(username: string): void {
