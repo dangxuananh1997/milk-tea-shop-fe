@@ -7,11 +7,13 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { ProductService } from './services/product.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    HttpClientModule
   ],
   declarations: [
     ProductHomeComponent, 

@@ -15,4 +15,12 @@ export class ProductEditComponent implements OnInit {
   ngOnInit() {
   }
 
+  saveProduct() {
+    this.activeModal.close(this.product);
+  }
+
+  cancelEdit() {
+    this.activeModal.dismiss();
+  }
+
 }

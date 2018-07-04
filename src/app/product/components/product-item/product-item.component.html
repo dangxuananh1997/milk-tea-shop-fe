@@ -3,12 +3,10 @@
     <img src="{{product.Picture}}" alt="">
   </div>
   <div class="card-block px-2">
-    <h4 class="card-title">{{product.ProductName}}</h4>
-    <p class="card-text">Id: {{product.Id}} Lorem ipsum dolor sit amet.</p>
+    <p class="card-text">Id: {{product.Id}} Name: {{product.Name}}</p>
     <div class="group-button">
       <button class="btn btn-primary mr-3" (click)="edit()">Update</button>
       <button class="btn btn-danger" (click)="delete()">Delete</button>
     </div>
-    </div>
-  <div class="w-100"></div>
+  </div>
 </div>

@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { PRODUCTS, Product } from "../../models/product";
+import { Product } from "../../models/product";
 import { SwalComponent } from '@toverux/ngx-sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductAddComponent } from '../product-add/product-add.component';
 import { ProductEditComponent } from '../product-edit/product-edit.component';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-home',
@@ -12,14 +13,31 @@ import { ProductEditComponent } from '../product-edit/product-edit.component';
 })
 export class ProductHomeComponent implements OnInit {
   @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
-  products = PRODUCTS;
+  products: Product[];
   addingProduct: Product = null;
   editingProduct: Product = null;
   deletingProduct: Product = null;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(
+    private modalService: NgbModal,
+    private productService: ProductService
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getData();
+  }
+
+  getData() {
+    this.productService.get()
+      .then(
+        (response) => {
+          this.products = response;
+        },
+        (error) => {
+          console.error(error);
+        }
+      )
+  }
 
   openAddModel() {
     const modalRef = this.modalService.open(ProductAddComponent);
@@ -28,9 +46,12 @@ export class ProductHomeComponent implements OnInit {
   openEditModel() {
     const modalRef = this.modalService.open(ProductEditComponent);
     modalRef.componentInstance.product = this.editingProduct;
-    modalRef.result.then((result) => {
-      console.log(result);
-    });
+    modalRef.result.then(
+      (product) => {
+        console.log(product);
+      },
+      () => {}
+    );
   }
 
   setEditingProduct(product: Product) {
@@ -44,13 +65,15 @@ export class ProductHomeComponent implements OnInit {
       this.deleteSwal.show();
     }, 300);
   }
-
-  deleteProduct(product: Product) {
-    
-  }
   
   editProduct(product: Product) {
+    //implement code here
+    this.productService.edit();
+  }
 
+  deleteProduct(product: Product) {
+    //implement code here
+    this.productService.delete();
   }
 
 }

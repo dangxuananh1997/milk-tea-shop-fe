@@ -22,7 +22,7 @@ div.card {
   margin-bottom: 30px !important;
 }
 div.card-block {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }

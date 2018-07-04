@@ -1,7 +1,7 @@
 <div>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+    <button type="button" class="close" aria-label="Close" (click)="cancelEdit()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -9,6 +9,6 @@
     {{product.ProductName}}
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close(product)">Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="saveProduct()">Save</button>
   </div>
 </div>
