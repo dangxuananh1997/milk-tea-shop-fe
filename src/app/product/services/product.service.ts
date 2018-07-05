@@ -12,7 +12,7 @@ export class ProductService {
 
   get(pageIndex: number, searchValue: string): Promise<Product[]> {
     return new Promise<Product[]>((resolve, reject) => {
-      this.httpClient.get(environment.apiLink + `Products/Get?pageIndex=${pageIndex}&searchValue=${searchValue}`)
+      this.httpClient.get(`${environment.apiLink}Products/Get?pageIndex=${pageIndex}&searchValue=${searchValue}`)
         .subscribe(
           (response: Product[]) => {
             resolve(response)
@@ -26,7 +26,7 @@ export class ProductService {
 
   create(data: Product): Promise<Product> {
     return new Promise<Product>((resolve, reject) => {
-      this.httpClient.post(environment.apiLink + 'Products/Create', data)
+      this.httpClient.post(`${environment.apiLink}Products/Create`, data)
         .subscribe(
           (response: Product) => {
             resolve(response);
@@ -40,7 +40,7 @@ export class ProductService {
 
   edit(data: Product): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
-      this.httpClient.put(environment.apiLink + 'Products/Update', data)
+      this.httpClient.put(`${environment.apiLink}Products/Update`, data)
         .subscribe(
           (response: boolean) => {
             resolve(response);
@@ -54,7 +54,7 @@ export class ProductService {
 
   delete(Id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      this.httpClient.delete(environment.apiLink + 'Products/Delete/' + Id)
+      this.httpClient.delete(`${environment.apiLink}Products/Delete/${Id}`)
       .subscribe(
         (response: any) => {
           resolve(response);

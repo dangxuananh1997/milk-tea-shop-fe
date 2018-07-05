@@ -22,7 +22,6 @@ export class ProductHomeComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private productService: ProductService
-
   ) { }
 
   ngOnInit() {

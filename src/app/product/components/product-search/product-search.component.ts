@@ -18,9 +18,10 @@ export class ProductSearchComponent implements OnInit {
     let tempSearch: string = this.searchValue;
     setTimeout(() => {
       if (tempSearch == this.searchValue) {
+        console.log(`${tempSearch} ${this.searchValue}`);
         this.search.emit(this.searchValue);
       }
-    }, 2000);
+    }, 400);
   }
 
 }
