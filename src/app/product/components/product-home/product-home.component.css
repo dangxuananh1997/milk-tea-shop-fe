@@ -1,11 +1,20 @@
 button.btn-success {
   width: 100%;
 }
-app-product-item.col-6:first-child, 
-app-product-item.col-6:nth-child(2) {
-  margin-top: 25px;
+div.col-12 div.row {
+  margin-top: 15px;
 }
 div.col-12 {
   padding-left: 0px;
   padding-right: 0px;
+}
+app-product-item {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+div.container-fluid {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  max-width: 100%;
 }

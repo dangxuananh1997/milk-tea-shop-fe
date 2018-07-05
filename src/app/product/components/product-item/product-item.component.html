@@ -1,10 +1,10 @@
-<div class="card flex-row flex-wrap">
-  <div class="card-header border-0">
+<div class="card flex-row flex-wrap row">
+  <div class="card-header border-0 col-2">
     <img src="{{product.Picture}}" alt="">
   </div>
-  <div class="card-block px-2">
-    <p class="card-text">Id: {{product.Id}} Name: {{product.Name}}</p>
-    <div class="group-button">
+  <div class="card-block px-2 col-10">
+    <p class="card-text col-9">Id: {{product.Id}} Name: {{product.Name}}</p>
+    <div class="group-button col-3">
       <button class="btn btn-primary mr-3" (click)="edit()">Update</button>
       <button class="btn btn-danger" (click)="delete()">Delete</button>
     </div>

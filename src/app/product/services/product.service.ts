@@ -10,9 +10,9 @@ export class ProductService {
 
   constructor(public httpClient: HttpClient) { }
 
-  get(): Promise<Product[]> {
+  get(pageIndex: number, searchValue: string): Promise<Product[]> {
     return new Promise<Product[]>((resolve, reject) => {
-      this.httpClient.get(environment.apiLink + 'Products/Get')
+      this.httpClient.get(environment.apiLink + `Products/Get?pageIndex=${pageIndex}&searchValue=${searchValue}`)
         .subscribe(
           (response: Product[]) => {
             resolve(response)
@@ -24,12 +24,29 @@ export class ProductService {
     });
   }
 
-  edit() {
-
+  edit(data: Product): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      this.httpClient.post(environment.apiLink + 'Products/Update', data)
+        .subscribe(
+          (response: boolean) => {
+            resolve(response)
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
   }
 
-  delete() {
-
+  delete(Id: number) {
+    // return new Promise<>((resolve, reject) => {
+    //   this.httpClient.delete(environment.apiLink + 'Products/Delete/' + Id)
+    //   .subscribe(
+    //     (response: boolean) => {
+          
+    //     }
+    //   )
+    // })
   }
   
 }
