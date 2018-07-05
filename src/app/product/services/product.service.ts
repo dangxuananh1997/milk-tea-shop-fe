@@ -24,12 +24,26 @@ export class ProductService {
     });
   }
 
+  create(data: Product): Promise<Product> {
+    return new Promise<Product>((resolve, reject) => {
+      this.httpClient.post(environment.apiLink + 'Products/Create', data)
+        .subscribe(
+          (response: Product) => {
+            resolve(response);
+          },
+          (error) => {
+            reject(error);
+          }
+        )
+    });
+  }
+
   edit(data: Product): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
-      this.httpClient.post(environment.apiLink + 'Products/Update', data)
+      this.httpClient.put(environment.apiLink + 'Products/Update', data)
         .subscribe(
           (response: boolean) => {
-            resolve(response)
+            resolve(response);
           },
           (error) => {
             reject(error);
@@ -38,15 +52,18 @@ export class ProductService {
     });
   }
 
-  delete(Id: number) {
-    // return new Promise<>((resolve, reject) => {
-    //   this.httpClient.delete(environment.apiLink + 'Products/Delete/' + Id)
-    //   .subscribe(
-    //     (response: boolean) => {
-          
-    //     }
-    //   )
-    // })
+  delete(Id: number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      this.httpClient.delete(environment.apiLink + 'Products/Delete/' + Id)
+      .subscribe(
+        (response: any) => {
+          resolve(response);
+        },
+        (error) => {
+          reject(error);
+        }
+      )
+    })
   }
   
 }

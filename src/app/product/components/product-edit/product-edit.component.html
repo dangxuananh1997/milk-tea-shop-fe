@@ -1,14 +1,27 @@
 <div>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Edit Product</h4>
     <button type="button" class="close" aria-label="Close" (click)="cancelEdit()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    {{product.Name}}
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="saveProduct()">Save</button>
+    <form>
+      <div class="form-group col-12">
+        <input type="text" class="form-control" placeholder="Product's name" [(ngModel)]="editProduct.Name" name="name" required>
+      </div>
+      <div class="custom-file col-12">
+        <input type="file" class="custom-file-input" id="validatedCustomFile" accept="image/*" (change)="changeImage($event)" required>
+        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+      </div>
+      <div class="col-12 text-center" *ngIf="url || editProduct.Picture">
+        <img [src]="url" class="preview-image" *ngIf="url">
+        <img [src]="editProduct.Picture" class="preview-image" *ngIf="!url">
+      </div>
+      <div class="col-12 text-center">
+        <button type="button" class="btn btn-outline-primary mr-3" (click)="saveProduct()">Save</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </form>
   </div>
 </div>

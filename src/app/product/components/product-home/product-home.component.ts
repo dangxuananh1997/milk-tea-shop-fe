@@ -14,9 +14,8 @@ import { ProductService } from '../../services/product.service';
 export class ProductHomeComponent implements OnInit {
   @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
   products: Product[] = [];
-  addingProduct: Product = null;
-  editingProduct: Product = null;
-  deletingProduct: Product = null;
+  editingProduct: Product;
+  deletingProduct: Product;
   pageIndex: number = 1;
   textSearch: string = '';
 
@@ -37,58 +36,73 @@ export class ProductHomeComponent implements OnInit {
     }
   }
 
+  resetData() {
+    this.pageIndex = 1;
+    this.products = [];
+    this.getData();
+    this.editingProduct = null;
+    this.deletingProduct = null;
+  }
+
   getData() {
     this.productService.get(this.pageIndex, this.textSearch)
       .then(
         (response) => {
           this.products = this.products.concat(response);
         },
-        (error) => {
-          console.error(error);
-        }
+        (error) => { console.error(error); }
       )
   }
 
   searchData(searchValue: string) {
-    this.pageIndex = 1;
-    this.products = [];
     this.textSearch = searchValue;
-    this.getData();
+    this.resetData();
   }
 
-  editProduct(product: Product) {
-  }
-
-  deleteProduct(product: Product) {
-    this.productService.delete(this.deletingProduct.Id);
-  }
-
-  openAddModel() {
+  addProduct() {
     const modalRef = this.modalService.open(ProductAddComponent);
-  }
-
-  openEditModel() {
-    const modalRef = this.modalService.open(ProductEditComponent);
-    modalRef.componentInstance.product = this.editingProduct;
     modalRef.result.then(
-      (product) => {
-        console.log(product);
+      (productAdd) => {
+        this.productService.create(productAdd).then(
+          (response) => { this.resetData(); }
+        );
       },
-      () => { }
+      (error) => { console.log(error); }
     );
   }
 
-  setEditingProduct(product: Product) {
-    this.editingProduct = product;
-    this.openEditModel();
+  editProduct(productFromItem: Product) {
+    this.editingProduct = productFromItem;
+    const modalRef = this.modalService.open(ProductEditComponent);
+
+    //input to modal
+    modalRef.componentInstance.product = this.editingProduct;
+
+    //return from modal
+    modalRef.result.then(
+      (productAfterChange) => {
+        this.editingProduct = productAfterChange;
+        this.productService.edit(this.editingProduct)
+          .then(
+            () => { this.resetData(); } 
+          );
+      },
+      (dismiss) => {  }
+    );
   }
 
-  setDeletingProduct(product: Product) {
-    this.deletingProduct = product;
+  showConfirmDelete(productFromItem: Product) {
+    this.deletingProduct = productFromItem;
     setTimeout(() => {
       this.deleteSwal.show();
     }, 300);
   }
 
+  deleteProduct() {
+    this.productService.delete(this.deletingProduct.Id)
+      .then(
+        () => { this.resetData(); }
+      );
+  }
 
 }
