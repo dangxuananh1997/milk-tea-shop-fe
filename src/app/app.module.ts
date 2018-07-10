@@ -6,10 +6,10 @@ import { SweetAlert2Module } from "@toverux/ngx-sweetalert2";
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AccountModule } from './account/account.module';
-import { CouponModule } from './coupon/coupon.module';
 import { OrderModule } from './order/order.module';
 import { ProductModule } from './product/product.module';
 import { RoutingModule } from './routing/routing.module';
+import { CouponPackageModule } from './coupon-package/coupon-package.module';
 
 @NgModule({
   declarations: [
@@ -26,10 +26,10 @@ import { RoutingModule } from './routing/routing.module';
     }),
     SharedModule,
     AccountModule,
-    CouponModule,
     OrderModule,
     ProductModule,
-    RoutingModule
+    RoutingModule,
+    CouponPackageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
