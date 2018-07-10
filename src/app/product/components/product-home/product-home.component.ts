@@ -5,6 +5,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductAddComponent } from '../product-add/product-add.component';
 import { ProductEditComponent } from '../product-edit/product-edit.component';
 import { ProductService } from '../../services/product.service';
+import { Variant } from '../../models/variant';
+import { ProductVariantComponent } from '../product-variant/product-variant.component';
 
 @Component({
   selector: 'app-product-home',
@@ -14,6 +16,7 @@ import { ProductService } from '../../services/product.service';
 export class ProductHomeComponent implements OnInit {
   @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
   products: Product[] = [];
+  variants: Variant[] = [];
   editingProduct: Product;
   deletingProduct: Product;
   pageIndex: number = 1;
@@ -38,6 +41,7 @@ export class ProductHomeComponent implements OnInit {
   resetData() {
     this.pageIndex = 1;
     this.products = [];
+    this.variants = [];
     this.getData();
     this.editingProduct = null;
     this.deletingProduct = null;
@@ -66,6 +70,15 @@ export class ProductHomeComponent implements OnInit {
           (response) => { this.resetData(); }
         );
       },
+      (error) => { console.log(error); }
+    );
+  }
+  
+  editVariant(productId: number) {
+    const modalRef = this.modalService.open(ProductVariantComponent);
+    modalRef.componentInstance.productId = productId;
+    modalRef.result.then(
+      () => { },
       (error) => { console.log(error); }
     );
   }
@@ -103,5 +116,4 @@ export class ProductHomeComponent implements OnInit {
         () => { this.resetData(); }
       );
   }
-
 }

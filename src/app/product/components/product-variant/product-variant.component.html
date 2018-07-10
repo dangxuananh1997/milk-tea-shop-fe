@@ -1,0 +1,96 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Variant</h4>
+    <button type="button" class="close" aria-label="Close" (click)="cancelEditVariant()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group col-12" *ngFor="let variant of variants">
+        <div class="row">
+          <div class="col-3">
+            <span>{{ variant.Size == 0 ? 'S' : variant.Size == 1 ? 'M' : 'L' }}</span>
+          </div>
+          <div class="col-5" *ngIf="variant?.Price !== undefined">
+            <span *ngIf="isEditing != variant.Id">{{variant.Price | number:'1.0-0'}} ₫</span>
+            <input type="number"
+              class="form-control"
+              *ngIf="isEditing == variant.Id"
+              [(ngModel)]="variant.Price"
+              name="cax">
+          </div>
+          <div class="col-4"> 
+            <button class="btn btn-warning mr-2" 
+              (click)="isEditing = variant.Id" 
+              *ngIf="isEditing != variant.Id">
+              <i class="icon-note"></i>
+            </button>
+            <button class="btn btn-success mr-2" 
+              (click)="editVariant(variant)" 
+              *ngIf="isEditing == variant.Id">
+              <i class="icon-check"></i>
+            </button>
+            <button class="btn btn-secondary mr-2" 
+              (click)="isEditing = 0" 
+              *ngIf="isEditing == variant.Id">
+              <i class="icon-close"></i>
+            </button>
+            <button class="btn btn-danger" 
+              *ngIf="isEditing != variant.Id" 
+              (click)="showConfirmDeleteVariant(variant)">
+              <i class="icon-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngIf="variants.length < 3">
+        <button class="btn btn-success" (click)="isAdding = true" *ngIf="!isAdding">
+          <i class="icon-plus mr-2"></i>
+          <span>Add</span>
+        </button>
+        <div class="form-group col-12">
+          <div class="row" *ngIf="isAdding">
+            <div class="col-3">
+              <select class="form-control" [(ngModel)]="addingVariant.Size" name="size">
+                <option value="0">S</option>
+                <option value="1">M</option>
+                <option value="2">L</option>
+              </select>
+            </div>
+            <div class="col-5">
+              <input type="number" class="form-control" name="price" [(ngModel)]="addingVariant.Price">
+            </div>
+            <div class="col-4">
+              <button class="btn btn-success mr-2" (click)="createVariant()">
+                <i class="icon-check"></i>
+              </button>
+              <button class="btn btn-secondary mr-2" (click)="isAdding = false">
+                <i class="icon-close"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="cancelEditVariant()">Close</button>
+  </div>
+</div>
+
+<swal #deletevariantSwal 
+  title="Delete?"
+  text="Are you sure?"
+  type="warning"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="deleteVariant()"
+  (cancel)="1">
+</swal>
+
+<swal #error 
+  title="Oops..." 
+  text="This size already exist" 
+  type="error">
+</swal>

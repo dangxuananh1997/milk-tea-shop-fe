@@ -15,7 +15,7 @@ export class ProductService {
       this.httpClient.get(`${environment.apiLink}Products/Get?pageIndex=${pageIndex}&searchValue=${searchValue}`)
         .subscribe(
           (response: Product[]) => {
-            resolve(response)
+            resolve(response);
           },
           (error) => {
             reject(error);

@@ -5,6 +5,7 @@ import { ProductAddComponent } from './components/product-add/product-add.compon
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
+import { ProductVariantComponent } from './components/product-variant/product-variant.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { ProductService } from './services/product.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,14 +23,16 @@ import { FormsModule } from '@angular/forms';
     ProductAddComponent, 
     ProductSearchComponent, 
     ProductEditComponent, 
-    ProductItemComponent
+    ProductItemComponent, 
+    ProductVariantComponent
   ],
   providers: [
     ProductService
   ],
   entryComponents: [
     ProductAddComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    ProductVariantComponent
   ]
 })
 export class ProductModule { }
