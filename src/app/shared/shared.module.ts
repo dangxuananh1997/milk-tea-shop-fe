@@ -7,6 +7,10 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { AccountService } from './services/account.service';
 import { RoutingModule } from '../routing/routing.module';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { HttpRequestInterceptorService } from './services/http-request-interceptor.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { GlobalVariablesService } from './services/global-variables.service';
 
 @NgModule({
   imports: [
@@ -17,13 +21,21 @@ import { RoutingModule } from '../routing/routing.module';
   ],
   declarations: [
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    LoadingSpinnerComponent
   ],
   exports: [
-    LoginComponent
+    LoginComponent,
+    LoadingSpinnerComponent
   ],
   providers: [
-    AccountService
+    AccountService,
+    GlobalVariablesService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptorService,
+      multi: true
+    }
   ]
 })
 export class SharedModule { }
