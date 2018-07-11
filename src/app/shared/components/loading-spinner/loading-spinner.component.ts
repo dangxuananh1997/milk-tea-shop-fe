@@ -14,13 +14,10 @@ export class LoadingSpinnerComponent implements OnInit {
   ngOnInit() {
     this.globalVariables.enableLoadingSpinner.subscribe(
       (isLoading) => {
-        if (isLoading)
+        console.log(isLoading);
+        setTimeout(() => {
           this.isLoading = isLoading;
-        else {
-          setTimeout(() => {
-            this.isLoading = isLoading;
-          }, 500);
-        }
+        }, isLoading ? 0 : 500);
       }
     );
   }

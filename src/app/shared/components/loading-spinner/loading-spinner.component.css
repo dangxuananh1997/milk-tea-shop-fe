@@ -21,7 +21,3 @@ div.overlay i {
   0% { transform: rotate(360deg); }
   100% { transform: rotate(0deg); }
 }
-div.hide {
-  opacity: 0;
-  z-index: -1;
-}
