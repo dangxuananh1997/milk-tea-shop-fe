@@ -3,6 +3,8 @@ import { HttpInterceptor, HttpHandler, HttpEvent, HttpRequest, HttpResponse } fr
 import { Observable } from 'rxjs';
 import { GlobalVariablesService } from './global-variables.service';
 
+import { catchError, finalize, map } from 'rxjs/operators';
+
 @Injectable()
 export class HttpRequestInterceptorService implements HttpInterceptor {
 
@@ -20,14 +22,13 @@ export class HttpRequestInterceptorService implements HttpInterceptor {
     //   });
     // }
 
-    let httpRequest = next.handle(request);
-    httpRequest.subscribe(
-      () => { },
-      () => { },
-      () => { this.globalVariable.enableLoadingSpinner.emit(false); }
+    return next.handle(request).pipe(
+      map(event => {
+        return event;
+      }),
+      finalize(() => {
+        this.globalVariable.enableLoadingSpinner.emit(false);
+      })
     );
-    
-
-    return httpRequest;
   }
 }
