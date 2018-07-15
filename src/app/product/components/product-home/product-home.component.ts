@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewChild, Inject, HostListener, Output } from '@angular/core';
-import { Product } from "../../models/product";
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SwalComponent } from '@toverux/ngx-sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Product } from "../../models/product";
+import { Variant } from '../../models/variant';
 import { ProductAddComponent } from '../product-add/product-add.component';
 import { ProductEditComponent } from '../product-edit/product-edit.component';
-import { ProductService } from '../../services/product.service';
-import { Variant } from '../../models/variant';
 import { ProductVariantComponent } from '../product-variant/product-variant.component';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-home',

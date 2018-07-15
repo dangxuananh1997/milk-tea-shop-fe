@@ -1,0 +1,47 @@
+div.col {
+  position: relative;
+}
+div.card-header {
+  width: 100px;
+  height: 100px;
+}
+div.col-1, div.col-3 {
+  border-right: 1px solid black;
+}
+div.col p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+div.row {
+  border: 1px solid black;
+  margin-bottom: 2px;
+}
+img.couponPackage-image {
+  position: absolute;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+div.card {
+  margin-top: 10px !important;
+}
+div.card-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+p.card-text {
+  margin-bottom: 0px !important;
+}
+div.card-block {
+  width: calc(100% - 200px);
+}
+div.col-3 {
+  border-right: none !important;
+}
+div.col-2 {
+  overflow: hidden;
+}

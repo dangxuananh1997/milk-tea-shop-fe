@@ -81,7 +81,8 @@ export class ProductVariantComponent implements OnInit {
       .then(
         () => {
           this.getData();
-        }
+        },
+        () => { }
       );
   }
 

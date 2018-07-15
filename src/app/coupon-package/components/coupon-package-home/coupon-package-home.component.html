@@ -1,3 +1,30 @@
-<p>
-  coupon-package-home works!
-</p>
+<div class="container-fluid" (scroll)="onScroll($event)">
+  <div class="row">
+    <div class="col-2 px-0">
+      <button class="btn btn-success" (click)="addCouponPackage()">
+        <i class="fa fa-plus mr-2"></i>
+        <span>Add</span>
+      </button>
+    </div>
+    <div class="col-10 pr-0">
+      <app-coupon-package-search (search)="searchData($event)"></app-coupon-package-search>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <app-coupon-package-item class="col-12" *ngFor="let couponPackage of couponPackages" [couponPackage]="couponPackage" (editCouponPackage)="editCouponPackage($event)"
+          (deleteCouponPackage)="showConfirmDelete($event)">
+        </app-coupon-package-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+<swal #deleteSwal 
+  title="Delete {{deletingCouponPackage?.Name}}?" 
+  text="You won't be able to revert this!" 
+  type="warning" 
+  [showCancelButton]="true"
+  [focusCancel]="true" 
+  (confirm)="deleteCouponPackage(deletingCouponPackage)" 
+  (cancel)="1">
+</swal>

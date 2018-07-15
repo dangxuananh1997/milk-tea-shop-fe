@@ -1,3 +1,26 @@
-<p>
-  coupon-package-add works!
-</p>
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Coupon Package</h4>
+    <button type="button" class="close" aria-label="Close" (click)="cancelAdd()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group col-12">
+        <input type="text" class="form-control" placeholder="CouponPackage's name" [(ngModel)]="couponPackage.Name" name="name" required>
+      </div>
+      <div class="custom-file col-12">
+        <input type="file" class="custom-file-input" id="validatedCustomFile" accept="image/*" (change)="changeImage($event)" required>
+        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+      </div>
+      <div class="col-12 text-center" *ngIf="url">
+        <img [src]="url" class="preview-image">
+      </div>
+      <div class="col-12 text-center">
+        <button type="button" class="btn btn-outline-primary mr-3" (click)="createCouponPackage()">Save</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="cancelAdd()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

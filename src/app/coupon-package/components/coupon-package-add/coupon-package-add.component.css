@@ -1,0 +1,12 @@
+div.modal-body div.col-12:nth-child(2) {
+  width: 93.5%;
+  margin-left: 15px;  
+}
+div.modal-body div.col-12:nth-child(3), 
+div.modal-body div.col-12:last-child {
+  margin-top: 15px;
+}
+img.preview-image {
+  width: auto;
+  height: 200px;
+}

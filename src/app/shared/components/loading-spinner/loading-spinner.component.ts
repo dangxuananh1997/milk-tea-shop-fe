@@ -14,7 +14,6 @@ export class LoadingSpinnerComponent implements OnInit {
   ngOnInit() {
     this.globalVariables.enableLoadingSpinner.subscribe(
       (isLoading) => {
-        console.log(isLoading);
         setTimeout(() => {
           this.isLoading = isLoading;
         }, isLoading ? 0 : 500);

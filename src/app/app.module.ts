@@ -8,8 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { AccountModule } from './account/account.module';
 import { OrderModule } from './order/order.module';
 import { ProductModule } from './product/product.module';
-import { RoutingModule } from './routing/routing.module';
 import { CouponPackageModule } from './coupon-package/coupon-package.module';
+import { RoutingModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
