@@ -11,6 +11,7 @@ export class AccountHomeComponent implements OnInit {
   accounts: Account[] = [];
   pageIndex: number = 1;
   textSearch: string = '';
+  total: number = 0;
   
   constructor(
     private accountService: AccountService
@@ -21,7 +22,8 @@ export class AccountHomeComponent implements OnInit {
   }
 
   onScroll(event: any) {
-    if (event.target.offsetHeight + event.target.scrollTop === event.target.scrollHeight) {
+    if ((event.target.offsetHeight + event.target.scrollTop === event.target.scrollHeight) 
+      && (this.accounts.length < this.total)) {
       this.pageIndex++;
       this.getData();
     }
@@ -31,13 +33,15 @@ export class AccountHomeComponent implements OnInit {
     this.pageIndex = 1;
     this.accounts = [];
     this.getData();
+    this.total = 0;
   }
 
   getData() {
     this.accountService.get(this.pageIndex, this.textSearch)
       .then(
         (response) => {
-          this.accounts = this.accounts.concat(response);
+          this.accounts = this.accounts.concat(response.Data);
+          this.total = response.Total;
         },
         (error) => { console.error(error); }
       )

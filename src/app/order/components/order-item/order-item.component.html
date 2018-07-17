@@ -3,15 +3,17 @@
     <div class="col-10">
       <div class="row">
         <div class="col-1">Id: {{order.Id}} </div>
-        <div class="col-1">UserId: {{order.UserId}}</div>
-        <div class="col-2">Total: {{order.TotalPrice}}</div>
-        <div class="col-2">
+        <div class="col-3" *ngIf="order.PaymentType == 3">Date: {{order.OrderDate | date:'medium'}}</div>
+        <div class="col-4">Date: {{order.OrderDate | date:'medium'}}</div>
+        <div class="col-3">
           PaymentType: {{order.PaymentType == 0 ? 'Cash' : 
-                        order.PaymentType == 1 ? 'Card' : 
-                                                'Coupon'}}</div>
+          order.PaymentType == 1 ? 'Card' : 
+          'Coupon'}}</div>
+        <div class="col-1" *ngIf="order.PaymentType == 3">CouponItemId: {{order.CouponItemId}}</div>                                      
         <div class="col-2">Status: {{order.Status}}</div>
-        <div class="col-2">Date: {{order.OrderDate | date:'medium'}}</div>
-        <div class="col-2" *ngIf="order.PaymentType == 3">CouponItemId: {{order.CouponItemId}}</div>
+        <div class="col-2">
+          <b style="color:red">Total: {{order.TotalPrice}}</b>
+        </div>
       </div>
     </div>
     <div class="group-button col-2">
