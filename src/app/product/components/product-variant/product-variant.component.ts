@@ -21,8 +21,7 @@ export class ProductVariantComponent implements OnInit {
 
   constructor(
     private activeModal: NgbActiveModal,
-    private variantService: VariantService,
-    private modalService: NgbModal
+    private variantService: VariantService
   ) { }
 
   ngOnInit() {
@@ -71,6 +70,7 @@ export class ProductVariantComponent implements OnInit {
 
   showConfirmDeleteVariant(deletingVariant: Variant) {
     this.deletingVariant = deletingVariant;
+    
     setTimeout(() => {
       this.deleteSwal.show();
     }, 300);

@@ -1,3 +1,56 @@
-<p>
-  order-home works!
-</p>
+<div class="container-fluid" (scroll)="onScroll($event)">
+  <div class="row">
+    <div class="col-12 pr-0">
+      <app-order-search (search)="searchData($event)"></app-order-search>
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <app-order-item
+          class="col-12"
+          *ngFor="let order of orders"
+          (viewOrder)="viewDetails($event)"
+          (approveOrder)="showApprove($event)"
+          (declineOrder)="showDecline($event)"
+          [order]="order">
+        </app-order-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+<swal
+  #acceptSwal
+  title="Approve Order{{acceptingOrder?.Id}}?"
+  text="You won't be able to revert this!"
+  type="warning"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="acceptOrder(acceptingOrder)"
+  (cancel)="1">
+</swal>
+
+<swal
+  #declineSwal
+  title="Decline Order{{decliningOrder?.Id}}?"
+  text="You won't be able to revert this!"
+  type="warning"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="declineOrder(decliningOrder)"
+  (cancel)="1">
+</swal>
+
+<swal
+  #confirmSwal
+  title="Approved"
+  text="Order has been approved"
+  type="success">
+</swal>
+
+<swal
+  #cancelSwal
+  title="Decline"
+  text="Order has been declined"
+  type="success">
+</swal>
+

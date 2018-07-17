@@ -8,8 +8,8 @@ export class CouponPackage {
   constructor() {
     this.Id = 0;
     this.Name = '';
-    this.DrinkQuantity = 0;
-    this.Price = 0;
+    this.DrinkQuantity = null;
+    this.Price = null;
     this.Picture = '';
   }
 }

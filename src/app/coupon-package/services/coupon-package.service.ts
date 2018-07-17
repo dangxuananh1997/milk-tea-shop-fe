@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { CouponPackage } from '../models/coupon-package';
+import { Data } from '../../shared/models/data';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,12 @@ export class CouponPackageService {
 
   constructor(public httpClient: HttpClient) { }
 
-  get(pageIndex: number, searchValue: string): Promise<CouponPackage[]> {
-    return new Promise<CouponPackage[]>((resolve, reject) => {
-      this.httpClient.get(`${environment.apiLink}CouponPackages/Get`)
-      // this.httpClient.get(`${environment.apiLink}CouponPackages/Get?pageIndex=${pageIndex}&searchValue=${searchValue}`)
+  get(pageIndex: number, searchValue: string): Promise<Data<CouponPackage>> {
+    return new Promise<Data<CouponPackage>>((resolve, reject) => {
+      // this.httpClient.get(`${environment.apiLink}CouponPackages/Get`)
+      this.httpClient.get(`${environment.apiLink}CouponPackages/Get?pageIndex=${pageIndex}&searchValue=${searchValue}`)
         .subscribe(
-          (response: CouponPackage[]) => {
+        (response: Data<CouponPackage>) => {
             resolve(response);
           },
           (error) => {

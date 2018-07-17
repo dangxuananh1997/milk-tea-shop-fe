@@ -18,6 +18,7 @@ export class CouponPackageHomeComponent implements OnInit {
   deletingCouponPackage: CouponPackage;
   pageIndex: number = 1;
   textSearch: string = '';
+  total: number = 0;
 
   constructor(
     private modalService: NgbModal,
@@ -29,7 +30,8 @@ export class CouponPackageHomeComponent implements OnInit {
   }
 
   onScroll(event: any) {
-    if (event.target.offsetHeight + event.target.scrollTop === event.target.scrollHeight) {
+    if ((event.target.offsetHeight + event.target.scrollTop === event.target.scrollHeight) 
+    && (this.couponPackages.length < this.total)){
       this.pageIndex++;
       this.getData();
     }
@@ -41,13 +43,15 @@ export class CouponPackageHomeComponent implements OnInit {
     this.getData();
     this.editingCouponPackage = null;
     this.deletingCouponPackage = null;
+    this.total = 0;
   }
 
   getData() {
     this.couponPackageService.get(this.pageIndex, this.textSearch)
       .then(
         (response) => {
-          this.couponPackages = this.couponPackages.concat(response);
+          this.couponPackages = this.couponPackages.concat(response.Data);
+          this.total = response.Total;
         },
         (error) => { }
       )
@@ -81,6 +85,7 @@ export class CouponPackageHomeComponent implements OnInit {
     modalRef.result.then(
       (couponPackageAfterChange) => {
         this.editingCouponPackage = couponPackageAfterChange;
+        
         this.couponPackageService.edit(this.editingCouponPackage)
           .then(
             () => { this.resetData(); }

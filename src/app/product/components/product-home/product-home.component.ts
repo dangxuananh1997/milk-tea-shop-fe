@@ -21,6 +21,7 @@ export class ProductHomeComponent implements OnInit {
   deletingProduct: Product;
   pageIndex: number = 1;
   textSearch: string = '';
+  total: number = 0;
 
   constructor(
     private modalService: NgbModal,
@@ -32,7 +33,8 @@ export class ProductHomeComponent implements OnInit {
   }
 
   onScroll(event: any) {
-    if (event.target.offsetHeight + event.target.scrollTop === event.target.scrollHeight) {
+    if ((event.target.offsetHeight + event.target.scrollTop === event.target.scrollHeight) 
+    && (this.products.length < this.total)) {
       this.pageIndex++;
       this.getData();
     }
@@ -45,13 +47,15 @@ export class ProductHomeComponent implements OnInit {
     this.getData();
     this.editingProduct = null;
     this.deletingProduct = null;
+    this.total = 0;
   }
 
   getData() {
     this.productService.get(this.pageIndex, this.textSearch)
       .then(
         (response) => {
-          this.products = this.products.concat(response);
+          this.products = this.products.concat(response.Data);
+          this.total = response.Total;
         },
         (error) => { console.error(error); }
       )

@@ -1,0 +1,66 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Order Detail</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group col-12" *ngFor="let orderDetail of orderDetails">
+        <div class="row">
+          <div class="col-2">Id: {{orderDetail.Id}}</div>
+          <div class="col-5">Quantity: {{orderDetail.Quantity}}</div>
+          <div class="col-5">Price: {{orderDetail.UnitPrice}}</div>
+        </div>
+      </div>
+      <div class="col-12 text-center">
+        <button type="button" class="btn btn-success mr-3"
+          *ngIf="order.Status=='Pending'" 
+          (click)="showConfirmApproveOrder(order)">Approve</button>
+        <button type="button" class="btn btn-danger mr-3"
+          *ngIf="order.Status=='Pending'"
+          (click)="showConfirmDeclineOrder(order)">Decline</button>
+        <button type="button" class="btn btn-secondary" 
+          (click)="closeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<swal
+  #acceptSwal
+  title="Approve Order{{order.Id}}?"
+  text="You won't be able to revert this!"
+  type="warning"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="acceptOrder(acceptingOrder)"
+  (cancel)="1">
+</swal>
+
+<swal
+  #declineSwal
+  title="Decline Order{{order.Id}}?"
+  text="You won't be able to revert this!"
+  type="warning"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="declineOrder(decliningOrder)"
+  (cancel)="1">
+</swal>
+
+<swal
+  #confirmSwal
+  title="Approved"
+  text="Order has been approved"
+  type="success">
+</swal>
+
+<swal
+  #cancelSwal
+  title="Decline"
+  text="Order has been declined"
+  type="success">
+</swal>
+

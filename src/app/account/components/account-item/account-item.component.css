@@ -2,8 +2,7 @@ div.col {
   position: relative;
 }
 div.card-header {
-  width: 100px;
-  height: 100px;
+  height: 160px;
 }
 div.col-3 {
   border-right: 1px solid black;
@@ -14,7 +13,7 @@ div.col p {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-div.row {
+div.card.row {
   border: 1px solid black;
   margin-bottom: 2px;
 }
@@ -38,7 +37,7 @@ p.card-text {
 }
 div.card-block {
   width: calc(100% - 200px);
-  overflow: auto;
+  overflow-x: hidden;
 }
 div.col-3 {
   border-right: none !important;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Product } from '../models/product';
+import { Data } from '../../shared/models/data';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,11 @@ export class ProductService {
 
   constructor(public httpClient: HttpClient) { }
 
-  get(pageIndex: number, searchValue: string): Promise<Product[]> {
-    return new Promise<Product[]>((resolve, reject) => {
+  get(pageIndex: number, searchValue: string): Promise<Data<Product>> {
+    return new Promise<Data<Product>>((resolve, reject) => {
       this.httpClient.get(`${environment.apiLink}Products/Get?pageIndex=${pageIndex}&searchValue=${searchValue}`)
         .subscribe(
-          (response: Product[]) => {
+        (response: Data<Product>) => {
             resolve(response);
           },
           (error) => {
@@ -24,11 +25,11 @@ export class ProductService {
     });
   }
 
-  create(data: Product): Promise<Product> {
-    return new Promise<Product>((resolve, reject) => {
+  create(data: Product): Promise<Data<Product>> {
+    return new Promise<Data<Product>>((resolve, reject) => {
       this.httpClient.post(`${environment.apiLink}Products/Create`, data)
         .subscribe(
-          (response: Product) => {
+        (response: Data<Product>) => {
             resolve(response);
           },
           (error) => {
