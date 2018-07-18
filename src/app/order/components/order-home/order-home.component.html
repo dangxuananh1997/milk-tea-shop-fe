@@ -9,48 +9,9 @@
           class="col-12"
           *ngFor="let order of orders"
           (viewOrder)="viewDetails($event)"
-          (approveOrder)="showApprove($event)"
-          (declineOrder)="showDecline($event)"
           [order]="order">
         </app-order-item>
       </div>
     </div>
   </div>
 </div>
-
-<swal
-  #acceptSwal
-  title="Approve Order{{acceptingOrder?.Id}}?"
-  text="You won't be able to revert this!"
-  type="warning"
-  [showCancelButton]="true"
-  [focusCancel]="true"
-  (confirm)="acceptOrder(acceptingOrder)"
-  (cancel)="1">
-</swal>
-
-<swal
-  #declineSwal
-  title="Decline Order{{decliningOrder?.Id}}?"
-  text="You won't be able to revert this!"
-  type="warning"
-  [showCancelButton]="true"
-  [focusCancel]="true"
-  (confirm)="declineOrder(decliningOrder)"
-  (cancel)="1">
-</swal>
-
-<swal
-  #confirmSwal
-  title="Approved"
-  text="Order has been approved"
-  type="success">
-</swal>
-
-<swal
-  #cancelSwal
-  title="Decline"
-  text="Order has been declined"
-  type="success">
-</swal>
-

@@ -1,5 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,20 @@ import { RouterModule } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
+  pageIndex: number = 0;
 
-  constructor() { }
+  constructor(
+    private accountService: AccountService
+  ) { }
 
   ngOnInit() {
   }
 
+  clickPage(pageIndex) {
+    this.pageIndex = pageIndex;
+  }
+
+  logOut() {
+    this.accountService.logout();
+  }
 }

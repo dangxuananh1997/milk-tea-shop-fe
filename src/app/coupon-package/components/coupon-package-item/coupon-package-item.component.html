@@ -8,7 +8,7 @@
         <div class="col-2">{{couponPackage.Id}}</div>
         <div class="col-4">{{couponPackage.Name}}</div>
         <div class="col-3">Quantity: {{couponPackage.DrinkQuantity}}</div>
-        <div class="col-3">Price: {{couponPackage.Price}}</div>
+        <div class="col-3">Price: {{couponPackage.Price | number:'1.0-0'}} ₫</div>
       </div>
     </div>
     <div class="group-button col-4 text-center">

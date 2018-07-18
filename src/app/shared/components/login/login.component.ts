@@ -11,23 +11,30 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   
-  constructor(private accountService: AccountService, private router: Router) { }
+  constructor(
+    private accountService: AccountService
+  ) { }
 
   ngOnInit() {
   }
 
   loginAdmin(): void {
-    this.accountService.loginAdmin();
-    this.router.navigate(['/home']);
+    this.accountService.loginAdmin(this.username, this.password)
+      .then(
+        () => { 
+          
+        },
+        () => {}
+      );
   }
   
   setUsername(username: string): void {
-    console.log(username);
+    // console.log(username);
     this.username = username;
   }
 
   setPassword(password: string): void {
-    console.log(password);
+    // console.log(password);
     this.password = password;
   }
 

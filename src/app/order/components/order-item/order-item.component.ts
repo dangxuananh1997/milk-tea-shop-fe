@@ -8,8 +8,8 @@ import { Order } from '../../models/order';
 })
 export class OrderItemComponent implements OnInit {
   @Input() order: Order;
-  @Output() approveOrder = new EventEmitter<Order>();
-  @Output() declineOrder = new EventEmitter<Order>();
+  // @Output() approveOrder = new EventEmitter<Order>();
+  // @Output() declineOrder = new EventEmitter<Order>();
   @Output() viewOrder = new EventEmitter<Order>();
 
   constructor() { }
@@ -17,13 +17,13 @@ export class OrderItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  approve() {
-    this.approveOrder.emit(this.order);
-  }
+  // approve() {
+  //   this.approveOrder.emit(this.order);
+  // }
 
-  decline() {
-    this.declineOrder.emit(this.order);
-  }
+  // decline() {
+  //   this.declineOrder.emit(this.order);
+  // }
 
   viewDetail() {
     this.viewOrder.emit(this.order);

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiLink: 'https://api-milktea-admin.azurewebsites.net/api/'
+  apiLink: 'https://api-milktea-admin.azurewebsites.net/api/',
+  tokenLink: 'https://api-milktea-admin.azurewebsites.net/',
 };
 
 /*

@@ -63,4 +63,19 @@ div.side-bar a.btn {
   width: 100%;
   text-decoration: none;
   margin-bottom: 5px;
+  text-align: left;
+}
+img.avatar {
+  width: 35px;
+  height: auto;
+  border-radius: 50%;
+}
+b {
+  font-size: 18px;
+}
+div.user-info {
+  cursor: pointer;
+}
+div.dropdown-menu.show {
+  left: -56px !important;
 }

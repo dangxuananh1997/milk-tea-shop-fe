@@ -58,54 +58,59 @@ export class OrderHomeComponent implements OnInit {
       )
   }
 
-  acceptOrder(acceptingOrder: Order) {
-    this.acceptingOrder.Status = 'Approved';
-    this.acceptingOrder = acceptingOrder; 
-    setTimeout(() => {
-      this.orderService.edit(acceptingOrder)
-        .then(
-          (response) => {
-            this.getData();
-          },
-          (error) => console.log(error)        
-        )
-      this.confirmSwal.show();
-    }, 300);
-  }
-
-  declineOrder(decliningOrder: Order) {
-    this.decliningOrder.Status = 'Declined';
-    this.decliningOrder = decliningOrder;
-    setTimeout(() => {
-      this.orderService.edit(decliningOrder)
-        .then(
-          (response) => {
-            this.getData();
-          },
-          (error) => console.log(error)
-        )
-      this.cancelSwal.show();
-    }, 300);
-  }
-
   searchData(searchValue: string) {
     this.textSearch = searchValue;
     this.resetData();
   }
 
-  showApprove(orderFromItem: Order) {
-    this.acceptingOrder = orderFromItem;
-    setTimeout(() => {
-      this.acceptSwal.show();
-    }, 300);
-  }
+  // acceptOrder(acceptingOrder: Order) {
+  //   this.acceptingOrder.Status = 'Approved';
+  //   this.acceptingOrder = acceptingOrder; 
+  //   setTimeout(() => {
+  //     this.orderService.edit(acceptingOrder)
+  //       .then(
+  //         (response) => {
+  //           this.getData();
+  //         },
+  //         (error) => console.log(error)        
+  //       )
+  //     this.confirmSwal.show();
+  //   }, 300);
+  // }
 
-  showDecline(orderFromItem: Order) {
-    this.decliningOrder = orderFromItem;
-    setTimeout(() => {
-      this.declineSwal.show();
-    }, 300);
-  }
+  // declineOrder(decliningOrder: Order) {
+  //   this.decliningOrder.Status = 'Declined';
+  //   this.decliningOrder = decliningOrder;
+  //   setTimeout(() => {
+  //     this.orderService.edit(decliningOrder)
+  //       .then(
+  //         (response) => {
+  //           this.getData();
+  //         },
+  //         (error) => console.log(error)
+  //       )
+  //     this.cancelSwal.show();
+  //   }, 300);
+  // }
+
+  // searchData(searchValue: string) {
+  //   this.textSearch = searchValue;
+  //   this.resetData();
+  // }
+
+  // showApprove(orderFromItem: Order) {
+  //   this.acceptingOrder = orderFromItem;
+  //   setTimeout(() => {
+  //     this.acceptSwal.show();
+  //   }, 300);
+  // }
+
+  // showDecline(orderFromItem: Order) {
+  //   this.decliningOrder = orderFromItem;
+  //   setTimeout(() => {
+  //     this.declineSwal.show();
+  //   }, 300);
+  // }
 
   viewDetails(order: Order) {
     const modalRef = this.modalService.open(OrderDetailComponent);

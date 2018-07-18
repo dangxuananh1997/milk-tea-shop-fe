@@ -4,14 +4,57 @@
       <p>MILK TEA SHOP</p>
       <img src="assets/images/logo-milk-tea.png" alt="">
     </div>
-    <a href="/#/home/product-home" role="button" class="btn btn-outline-primary">Product</a>
-    <a href="/#/home/coupon-package-home" role="button" class="btn btn-outline-primary">Coupon Package</a>
-    <a href="/#/home/order-home" role="button" class="btn btn-outline-primary">Order</a>
-    <a href="/#/home/account-home" role="button" class="btn btn-outline-primary">Account</a>
+    <a href="/#/home/product-home" 
+      (click)="clickPage(1)" 
+      role="button" 
+      class="btn" 
+      [ngClass]="{'btn-primary': pageIndex == 1, 'btn-outline-primary': pageIndex != 1 }">
+      <i class="icon-cup mr-2"></i>
+      <span>Product</span>
+    </a>
+    <a href="/#/home/coupon-package-home" 
+      (click)="clickPage(2)" 
+      role="button" 
+      class="btn" 
+      [ngClass]="{'btn-primary': pageIndex == 2, 'btn-outline-primary': pageIndex != 2 }">
+      <i class="icon-present mr-2"></i>
+      <span>Coupon Package</span>
+    </a>
+     <a href="/#/home/order-home" 
+      (click)="clickPage(3)" 
+      role="button" 
+      class="btn" 
+      [ngClass]="{'btn-primary': pageIndex == 3, 'btn-outline-primary': pageIndex != 3 }">
+      <i class="icon-basket mr-2"></i>
+      <span>Order</span>
+    </a>
+    <a href="/#/home/account-home" 
+      (click)="clickPage(4)" 
+      role="button" 
+      class="btn" 
+      [ngClass]="{'btn-primary': pageIndex == 4, 'btn-outline-primary': pageIndex != 4 }">
+      <i class="icon-user mr-2"></i>
+      <span>Account</span>
+    </a>
   </div>
   <div class="main">
     <div class="top-bar">
-      
+      <div class="col text-right">
+        <div ngbDropdown class="d-inline-block">
+          <div class="mr-4 mt-2 user-info" id="dropdownBasic1" ngbDropdownToggle>
+            <img src="../../../../assets/images/user.png" 
+              alt="images" 
+              class="avatar mr-2">
+              <b>Admin</b>
+          </div>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button class="dropdown-item" (click)="logOut()">
+              <i class="icon-logout mr-2"></i>
+              <span>Log Out</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="content">
       <div class="content-card">

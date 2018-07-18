@@ -2,17 +2,17 @@
   <div class="card-block px-2 col-12">
     <div class="col-10">
       <div class="row">
-        <div class="col-1">Id: {{order.Id}} </div>
-        <div class="col-3" *ngIf="order.PaymentType == 3">Date: {{order.OrderDate | date:'medium'}}</div>
+        <!-- <div class="col-1">Id: {{order.Id}} </div> -->
+        <div class="col-3" *ngIf="order.PaymentType == 3">Date: {{order.OrderDate | date:'hh:mm dd/MM/yy'}}</div>
         <div class="col-4">Date: {{order.OrderDate | date:'medium'}}</div>
         <div class="col-3">
           PaymentType: {{order.PaymentType == 0 ? 'Cash' : 
           order.PaymentType == 1 ? 'Card' : 
           'Coupon'}}</div>
         <div class="col-1" *ngIf="order.PaymentType == 3">CouponItemId: {{order.CouponItemId}}</div>                                      
-        <div class="col-2">Status: {{order.Status}}</div>
+        <div class="col-3">Status: {{order.Status}}</div>
         <div class="col-2">
-          <b style="color:red">Total: {{order.TotalPrice}}</b>
+          <b style="color:red">Total: {{order.TotalPrice | number:'1.0-0'}} ₫</b>
         </div>
       </div>
     </div>
@@ -21,12 +21,12 @@
         <button class="btn btn-primary my-1 col-12" (click)="viewDetail()">
           <i class="mr-2 icon-eye"></i>View Detail
         </button>
-        <div class="col-6 no-padding" *ngIf="order.Status == 'Pending'">
+        <!-- <div class="col-6 no-padding" *ngIf="order.Status == 'Pending'">
           <button class="btn btn-success mb-1" (click)="approve()">Approve</button>
         </div>
         <div class="col-6 no-padding" *ngIf="order.Status == 'Pending'">
           <button class="btn btn-danger mb-1" (click)="decline()">Decline</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

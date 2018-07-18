@@ -1,30 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Token } from '../models/token';
-import { tokenKey } from '@angular/core/src/view';
+import { HttpClient } from "@angular/common/http";
+import { environment } from '../../../environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
-  constructor() { }
-
-  loginAdmin() {
-    //api call return token
-    let token: Token = new Token();
-    token.access_token = 'abc';
-    token.role = 'admin';
+  loginAdmin(username: string, password: string): Promise<Token> {
+    console.log(username, password);
+    return new Promise<Token>((resolve, reject) => {
+      this.httpClient.post(`${environment.tokenLink}token`, 
+        `grant_type=password&username=${username}&password=${password}`)
+        .subscribe(
+          (response: Token) => {
+            this.saveToken(response);
+            this.setExpiredTime(response);
+            this.router.navigate(['/home']);
+            resolve(response);
+          },
+          (error) => {
+            reject(error);
+            console.log(error);
+            
+          }
+        );
+      });
+    }
+    
+  saveToken(token: Token) {
     localStorage.setItem('MILK_TEA_SHOP_ACCESS_TOKEN', JSON.stringify(token));
   }
 
-  loginUser() {
-    let token: Token = new Token();
-    token.access_token = '123';
-    token.role = 'user';
-    localStorage.setItem('MILK_TEA_SHOP_ACCESS_TOKEN', JSON.stringify(token));
+  setExpiredTime(token: Token) {
+    var time = new Date().getHours();
+    token.expires_in += time;
+    localStorage.setItem('MILK_TEA_SHOP', JSON.stringify(token));
   }
 
   logout() {
     localStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

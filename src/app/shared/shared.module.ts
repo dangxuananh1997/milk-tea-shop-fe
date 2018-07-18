@@ -17,7 +17,7 @@ import { GlobalVariablesService } from './services/global-variables.service';
     CommonModule,
     NgbModule,
     FormsModule,
-    RoutingModule
+    RoutingModule,
   ],
   declarations: [
     LoginComponent,
