@@ -31,6 +31,9 @@
           Password is required.
         </div>
       </div>
+      <div class="alert alert-danger boxshadow col-12 text-center" *ngIf="invalidLogin">
+        Invalid username or password!
+      </div>
       <button type="submit" class="btn boxshadow text-center" (click)="loginAdmin()">Login</button>
     </div>
   </form>

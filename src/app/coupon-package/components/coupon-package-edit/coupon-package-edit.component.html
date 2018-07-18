@@ -21,12 +21,12 @@
         <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
       </div>
       <div class="col-12 text-center" *ngIf="url || editCouponPackage.Picture">
-        <img [src]="url" class="preview-image" *ngIf="url">
-        <img [src]="editCouponPackage.Picture" class="preview-image" *ngIf="!url">
+        <img [src]="url" class="preview-image boxshadow" *ngIf="url">
+        <img [src]="editCouponPackage.Picture" class="preview-image boxshadow" *ngIf="!url">
       </div>
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-outline-primary mr-3" (click)="saveCouponPackage()">Save</button>
-        <button type="button" class="btn btn-outline-secondary" (click)="cancelEdit()">Cancel</button>
+        <button type="button" class="btn btn-primary mr-3 boxshadow" (click)="saveCouponPackage()">Save</button>
+        <button type="button" class="btn btn-secondary boxshadow" (click)="cancelEdit()">Cancel</button>
       </div>
     </form>
   </div>

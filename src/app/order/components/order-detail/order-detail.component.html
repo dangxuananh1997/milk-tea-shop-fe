@@ -15,13 +15,13 @@
         </div>
       </div>
       <div class="col-12 text-center">
-        <button type="button" class="btn btn-success mr-3"
+        <button type="button" class="btn btn-success mr-3 boxshadow"
           *ngIf="order.Status=='Pending'" 
           (click)="showConfirmApproveOrder(order)">Approve</button>
-        <button type="button" class="btn btn-danger mr-3"
+        <button type="button" class="btn btn-danger mr-3 boxshadow"
           *ngIf="order.Status=='Pending'"
           (click)="showConfirmDeclineOrder(order)">Decline</button>
-        <button type="button" class="btn btn-secondary" 
+        <button type="button" class="btn btn-secondary boxshadow" 
           (click)="closeModal()">Cancel</button>
       </div>
     </form>

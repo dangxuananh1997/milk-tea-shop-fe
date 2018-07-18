@@ -15,28 +15,28 @@
           <div class="col-5" *ngIf="variant?.Price !== undefined">
             <span *ngIf="isEditing != variant.Id">{{variant.Price | number:'1.0-0'}} ₫</span>
             <input type="number"
-              class="form-control"
+              class="form-control boxshadow"
               *ngIf="isEditing == variant.Id"
               [(ngModel)]="variant.Price"
               name="cax">
           </div>
           <div class="col-4"> 
-            <button class="btn btn-warning mr-2" 
+            <button class="btn btn-warning mr-2 boxshadow" 
               (click)="isEditing = variant.Id" 
               *ngIf="isEditing != variant.Id">
               <i class="icon-note"></i>
             </button>
-            <button class="btn btn-success mr-2" 
+            <button class="btn btn-success mr-2 boxshadow" 
               (click)="editVariant(variant)" 
               *ngIf="isEditing == variant.Id">
               <i class="icon-check"></i>
             </button>
-            <button class="btn btn-secondary mr-2" 
+            <button class="btn btn-secondary mr-2 boxshadow" 
               (click)="isEditing = 0" 
               *ngIf="isEditing == variant.Id">
               <i class="icon-close"></i>
             </button>
-            <button class="btn btn-danger" 
+            <button class="btn btn-danger boxshadow" 
               *ngIf="isEditing != variant.Id" 
               (click)="showConfirmDeleteVariant(variant)">
               <i class="icon-trash"></i>
@@ -45,27 +45,27 @@
         </div>
       </div>
       <ng-container *ngIf="variants.length < 3">
-        <button class="btn btn-success" (click)="isAdding = true" *ngIf="!isAdding">
+        <button class="btn btn-success boxshadow" (click)="isAdding = true" *ngIf="!isAdding">
           <i class="icon-plus mr-2"></i>
           <span>Add</span>
         </button>
         <div class="form-group col-12">
           <div class="row" *ngIf="isAdding">
             <div class="col-3">
-              <select class="form-control" [(ngModel)]="addingVariant.Size" name="size">
+              <select class="form-control boxshadow" [(ngModel)]="addingVariant.Size" name="size">
                 <option value="0">S</option>
                 <option value="1">M</option>
                 <option value="2">L</option>
               </select>
             </div>
             <div class="col-5">
-              <input type="number" class="form-control" name="price" [(ngModel)]="addingVariant.Price">
+              <input type="number" class="form-control boxshadow" name="price" [(ngModel)]="addingVariant.Price">
             </div>
             <div class="col-4">
-              <button class="btn btn-success mr-2" (click)="createVariant()">
+              <button class="btn btn-success boxshadow mr-2" (click)="createVariant()">
                 <i class="icon-check"></i>
               </button>
-              <button class="btn btn-secondary mr-2" (click)="isAdding = false">
+              <button class="btn btn-secondary boxshadow mr-2" (click)="isAdding = false">
                 <i class="icon-close"></i>
               </button>
             </div>
@@ -75,7 +75,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="cancelEditVariant()">Close</button>
+    <button type="button" class="btn boxshadow btn-default" (click)="cancelEditVariant()">Close</button>
   </div>
 </div>
 

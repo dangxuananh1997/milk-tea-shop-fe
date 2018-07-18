@@ -1,13 +1,13 @@
-<div class="card flex-row flex-wrap row">
+<div class="card flex-row flex-wrap row boxshadow">
   <div class="card-header border-0 col-2">
     <img src="{{product.Picture}}" alt="image" class="product-image">
   </div>
   <div class="card-block px-2 col-10">
     <p class="card-text col-8">Id: {{product.Id}} Name: {{product.Name}}</p>
     <div class="group-button col-4">
-      <button class="btn btn-primary mr-3" (click)="edtVariant()">Variant</button>
-      <button class="btn btn-warning mr-3" (click)="edit()">Update</button>
-      <button class="btn btn-danger" (click)="delete()">Delete</button>
+      <button class="btn btn-primary mr-3 boxshadow" (click)="edtVariant()">Variant</button>
+      <button class="btn btn-warning mr-3 boxshadow" (click)="edit()">Update</button>
+      <button class="btn btn-danger boxshadow" (click)="delete()">Delete</button>
     </div>
   </div>
 </div>

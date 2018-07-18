@@ -75,7 +75,18 @@ b {
 }
 div.user-info {
   cursor: pointer;
+  background-color: white;
+  padding-right: 2px;
+  box-shadow: 0 10px 6px -6px #777;
+  border: 1px solid black;
+  border-radius: 3px;
 }
 div.dropdown-menu.show {
-  left: -56px !important;
+  left: -28px !important;
+}
+i.icon-user {
+  font-size: 23px;
+}
+.dropdown-toggle::after {
+  margin-left: 10px;
 }
