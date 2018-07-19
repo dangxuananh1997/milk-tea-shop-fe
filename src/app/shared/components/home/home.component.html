@@ -1,8 +1,10 @@
 <div class="milk-tea-container">
   <div class="side-bar">
     <div class="logo">
-      <p>MILK TEA SHOP</p>
-      <img src="assets/images/logo-milk-tea.png" alt="">
+      <a href="/#/home/product-home" (click)="clickPage(1)">
+        <p>MILK TEA SHOP</p>
+        <img src="assets/images/logo-milk-tea.png" alt="">
+      </a>
     </div>
     <a href="/#/home/product-home" 
       (click)="clickPage(1)" 
@@ -41,7 +43,7 @@
     <div class="top-bar">
       <div class="col text-right">
         <div ngbDropdown class="d-inline-block">
-          <div class="px-3 py-1 mr-4 mt-1 user-info" id="avatarDropdown" ngbDropdownToggle>
+          <div class="px-3 py-1 mr-4 mt-2 user-info" id="avatarDropdown" ngbDropdownToggle>
             <i class="icon-user mr-2"></i>
             <b>Admin</b>
           </div>

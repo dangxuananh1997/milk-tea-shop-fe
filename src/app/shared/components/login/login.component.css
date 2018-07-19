@@ -52,3 +52,11 @@ button.btn {
 .ng-invalid:not(form), input.ng-invalid.ng-pristine.ng-touched {
   border-left: 5px solid #a94442; /* red */
 }
+
+.isInvalid {
+  border-left: 5px solid #a94442 !important; /* red */
+}
+
+.isValid {
+  border-left: 5px solid #42A948 !important; /* green */
+}

@@ -9,6 +9,13 @@ div.logo {
   position: relative;
   height: 55px;
 }
+div.logo a {
+  color: black;
+  text-decoration: none;
+}
+div.side-bar > a {
+  margin-top: 5px;
+}
 div.logo img {
   position: absolute;
   top: 30%;
@@ -78,8 +85,8 @@ div.user-info {
   background-color: white;
   padding-right: 2px;
   box-shadow: 0 10px 6px -6px #777;
-  border: 1px solid black;
   border-radius: 3px;
+  opacity: .6;
 }
 div.dropdown-menu.show {
   left: -28px !important;

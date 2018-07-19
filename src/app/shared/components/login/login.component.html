@@ -9,7 +9,10 @@
             <i class="fa fa-user"></i>
           </div>
         </div>
-        <input type="text" name="username" class="form-control" required placeholder="Username" [ngModel]="" #username="ngModel"
+        <input type="text" name="username" 
+          class="form-control" required placeholder="Username" 
+          [ngModel]="" #username="ngModel"
+          [ngClass]="{'isInvalid': invalidLogin == true, 'isValid': invalidLogin == false}"
           (blur)="setUsername(username.value)">
       </div>
       <label class="sr-only" for="password">Password</label>
@@ -19,7 +22,10 @@
             <i class="fa fa-lock"></i>
           </div>
         </div>
-        <input type="password" name="password" class="form-control" required placeholder="Password" [ngModel]="" #password="ngModel"
+        <input type="password" name="password" 
+          class="form-control" required placeholder="Password" 
+          [ngModel]="" #password="ngModel"
+          [ngClass]="{'isInvalid': invalidLogin == true, 'isValid': invalidLogin == false}"
           (blur)="setPassword(password.value)">
       </div>
       <div class="alert alert-danger boxshadow col-12 text-center"

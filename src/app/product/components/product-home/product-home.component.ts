@@ -83,7 +83,7 @@ export class ProductHomeComponent implements OnInit {
     modalRef.componentInstance.productId = productId;
     modalRef.result.then(
       () => { },
-      (error) => { console.log(error); }
+      () => { }
     );
   }
 
