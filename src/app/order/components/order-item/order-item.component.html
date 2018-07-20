@@ -10,9 +10,16 @@
           order.PaymentType == 1 ? 'Card' : 
           'Coupon'}}</div>
         <div class="col-1" *ngIf="order.PaymentType == 3">CouponItemId: {{order.CouponItemId}}</div>                                      
-        <div class="col-3">Status: {{order.Status}}</div>
         <div class="col-2">
-          <b style="color:red">Total: {{order.TotalPrice | number:'1.0-0'}} ₫</b>
+          <b style="color:blue">Total: {{order.TotalPrice | number:'1.0-0'}} ₫</b>
+        </div>
+        <div class="col-3">
+          <div class="row">
+            <b>Status:</b>
+            <div class="ml-1" [ngClass]="{'red': order.Status == 'Declined', 'green': order.Status == 'Approved', 'black': order.Status == 'Pending'}">
+            {{order.Status}}
+            </div>
+          </div>
         </div>
       </div>
     </div>

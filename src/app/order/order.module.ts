@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrderHomeComponent } from './components/order-home/order-home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { OrderSearchComponent } from './components/order-search/order-search.component';
-import { FormsModule } from '@angular/forms';
-import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
-import { HttpClientModule } from '@angular/common/http';
-import { OrderService } from './services/order.service';
+import { OrderHomeComponent } from './components/order-home/order-home.component';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { OrderService } from './services/order.service';
 
 @NgModule({
   imports: [
@@ -15,6 +18,7 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
     FormsModule,
     SweetAlert2Module,
     HttpClientModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     OrderHomeComponent, 

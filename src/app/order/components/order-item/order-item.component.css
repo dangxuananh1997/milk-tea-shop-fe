@@ -44,3 +44,15 @@ div.col-2 {
 button {
   width: 97.5%;
 }
+div.red {
+  color: red;
+  font-weight: 700;
+}
+div.green {
+  color: green;
+  font-weight: 700;
+}
+div.black {
+  color: black;
+  font-weight: 700;
+}

@@ -1,4 +1,4 @@
-<div class="container-fluid" (scroll)="onScroll($event)">
+<div class="container-fluid" (scroll)="onScroll($event)" [@listAnimation]="couponPackages.length">
   <div class="row">
     <div class="col-2 px-0">
       <button class="btn btn-success boxshadow" (click)="addCouponPackage()">

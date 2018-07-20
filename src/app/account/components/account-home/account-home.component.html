@@ -1,4 +1,4 @@
-<div class="container-fluid" (scroll)="onScroll($event)">
+<div class="container-fluid" (scroll)="onScroll($event)" [@listAnimation]="accounts.length">
   <div class="row">
     <div class="col-12 pr-0">
       <app-account-search (search)="searchData($event)"></app-account-search>

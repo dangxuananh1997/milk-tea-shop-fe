@@ -17,12 +17,14 @@ export class AuthGuardService implements CanActivate {
     let token: Token = JSON.parse(tokenJson);
     const tokenTime = localStorage.getItem('MILK_TEA_SHOP');
     let tokenExpired: Token = JSON.parse(tokenTime);
+    var currentHour = new Date().getHours();
     
     if (token === undefined || token === null || token.role != expectedRole || 
-      Math.round(tokenExpired.expires_in) < new Date().getHours()) {
+      (tokenExpired.expires_in) < currentHour) {
+        alert('Expired session! Please login again!');
         this.router.navigate(['/login']);
         return false;
-      } 
+      }
     return true;
   }
 }

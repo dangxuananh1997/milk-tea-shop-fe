@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild, Inject, HostListener, Output } from '@angular/core';
-import { CouponPackage } from "../../models/coupon-package";
+import { trigger, style, transition, animate, keyframes, query, stagger } from "@angular/animations";
+
 import { SwalComponent } from '@toverux/ngx-sweetalert2';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { CouponPackage } from "../../models/coupon-package";
 import { CouponPackageAddComponent } from '../coupon-package-add/coupon-package-add.component';
 import { CouponPackageEditComponent } from '../coupon-package-edit/coupon-package-edit.component';
 import { CouponPackageService } from '../../services/coupon-package.service';
@@ -9,7 +12,33 @@ import { CouponPackageService } from '../../services/coupon-package.service';
 @Component({
   selector: 'app-coupon-package-home',
   templateUrl: './coupon-package-home.component.html',
-  styleUrls: ['./coupon-package-home.component.css']
+  styleUrls: ['./coupon-package-home.component.css'],
+  animations: [
+
+    trigger('listAnimation', [
+      transition('* => *', [
+        query(':enter', style({ opacity: 0 }), { optional: true }),
+
+        query(':enter', stagger('200ms', [
+          animate('0.8s ease-in', keyframes([
+            style({ opacity: 0, transform: 'translateY(-75px)', offset: 0 }),
+            style({ opacity: 0.5, transform: 'translateY(35px)', offset: 0.3 }),
+            style({ opacity: 1, transform: 'translateY(0)', offset: 1 }),
+          ]))
+        ]), { optional: true }),
+
+        query(':leave', stagger('200ms', [
+          animate('0.8s ease-in', keyframes([
+            style({ opacity: 1, transform: 'translateY(0)', offset: 0 }),
+            style({ opacity: 0.5, transform: 'translateY(35px)', offset: 0.3 }),
+            style({ opacity: 0, transform: 'translateY(-75px)', offset: 1 }),
+          ]))
+        ]), { optional: true }),
+
+
+      ])
+    ])
+  ]
 })
 export class CouponPackageHomeComponent implements OnInit {
   @ViewChild('deleteSwal') private deleteSwal: SwalComponent;

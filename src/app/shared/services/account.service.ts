@@ -36,7 +36,8 @@ export class AccountService {
 
   setExpiredTime(token: Token) {
     var time = new Date().getHours();
-    token.expires_in += time;
+    token.expires_in = (token.expires_in / 3600) + time ;
+    
     localStorage.setItem('MILK_TEA_SHOP', JSON.stringify(token));
   }
 
