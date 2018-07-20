@@ -9,9 +9,32 @@
     <form>
       <div class="form-group col-12" *ngFor="let orderDetail of orderDetails">
         <div class="row">
-          <div class="col-2">Id: {{orderDetail.Id}}</div>
-          <div class="col-5">Quantity: {{orderDetail.Quantity}}</div>
-          <div class="col-5">Price: {{orderDetail.UnitPrice | number:'1.0-0'}} ₫</div>
+          <div class="col-2">
+            <img src="{{orderDetail.ProductVariant.Picture}}" alt="images" class="order-detail-image">
+          </div>
+          <div class="col-10">
+            <div class="row">
+              <div class="col-12">{{orderDetail.ProductVariant.ProductName}}</div>
+              <div class="col-4">Quantity: {{orderDetail.Quantity}}</div>
+              <div class="col-3">
+                <span>Size:{{ orderDetail.ProductVariant.Size == 0 ? 'S' : orderDetail.ProductVariant.Size == 1 ? 'M' : 'L' }}</span>
+              </div>
+              <div class="col-5">
+                <div>Price: <b>{{orderDetail.UnitPrice | number:'1.0-0'}}</b> ₫</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown-divider"></div>
+      <div class="col-12 mb-3">
+        <div class="row">
+          <div class="col-8 total-text">
+            <b>Total: </b>
+          </div>
+          <div class="col-4 price-text">
+            <b>{{order.TotalPrice | number:'1.0-0'}} ₫</b>
+          </div>
         </div>
       </div>
       <div class="col-12 text-center">
@@ -30,7 +53,7 @@
 
 <swal
   #acceptSwal
-  title="Approve Order{{order.Id}}?"
+  title="Approve Order?"
   text="You won't be able to revert this!"
   type="warning"
   [showCancelButton]="true"
@@ -41,7 +64,7 @@
 
 <swal
   #declineSwal
-  title="Decline Order{{order.Id}}?"
+  title="Decline Order?"
   text="You won't be able to revert this!"
   type="warning"
   [showCancelButton]="true"

@@ -56,3 +56,14 @@ div.black {
   color: black;
   font-weight: 700;
 }
+div.yellow {
+  color: rgb(155, 155, 0);
+  font-weight: 700;
+}
+div.col-5 {
+  text-align: left;
+}
+div.blue {
+  color: blue;
+  font-weight: bold;
+}
