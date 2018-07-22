@@ -4,16 +4,21 @@
       <div class="row">
         <div class="col-7">
           <div class="col-12">
+            <i class="mr-2 icon icon-user"></i>
             <b>Name: </b>{{order.CustomerName}}</div>
           <div class="col-12">
+            <i class="mr-2 icon icon-phone"></i>
             <b>Phone: </b>{{order.ContactPhone}}</div>
           <!-- <div class="col-3 mt-1" *ngIf="order.PaymentType == 3">Date: {{order.OrderDate | date:'hh:mm dd/MM/yy'}}</div> -->
           <div class="col-12">
+            <i class="mr-2 icon icon-location-pin"></i>
             <b>Address: </b>{{order.DeliveryAddress}}</div>
           <div class="col-12">
+            <i class="mr-2 icon icon-calendar"></i>
             <b>Date: </b>{{order.OrderDate | date:'medium'}}</div>
           <div class="col-12">
-            <b>PaymentType: </b>{{order.PaymentType == 0 ? 'Cash' : order.PaymentType == 1 ? 'Card' : 'Coupon'}}
+            <i class="mr-2 icon icon-credit-card"></i>
+            <b>PaymentType: </b>{{order.PaymentType == 0 ? 'Cash' : order.PaymentType == 1 ? 'Coupon' : 'Card'}}
           </div>
           <!-- <div class="col-1 mt-1" *ngIf="order.PaymentType == 3">CouponItemId: {{order.CouponItemId}}</div>                                       -->
         </div>
@@ -21,14 +26,16 @@
           <div class="row">
             <div class="col-12">
               <div class="row">
+                <i class="mr-2 icon icon-bulb"></i>
                 <b>Status:</b>
-                <div class="ml-1" [ngClass]="{'red': order.Status == 'Declined', 'green': order.Status == 'Approved', 'yellow': order.Status == 'Pending'}">
+                <div class="ml-1" [ngClass]="{'delivery': order.Status == 'Delivered', 'red': order.Status == 'Declined', 'green': order.Status == 'Approved', 'yellow': order.Status == 'Pending'}">
                   {{order.Status}}
                 </div>
               </div>
             </div>
             <div class="col-12">
               <div class="row">
+                <i class="mr-2 icon icon-wallet"></i>
                 <b>Total: </b>
                 <div class="ml-1 blue">
                   {{order.TotalPrice | number:'1.0-0'}} ₫
@@ -42,7 +49,7 @@
     <div class="group-button col-2">
       <div class="row">
         <button class="btn btn-primary my-1 col-12 boxshadow" (click)="viewDetail()">
-          <i class="mr-2 icon-eye"></i>View Detail
+          <i class="mr-2 icon icon-eye"></i>View Detail
         </button>
         <!-- <div class="col-6 no-padding" *ngIf="order.Status == 'Pending'">
           <button class="btn btn-success mb-1" (click)="approve()">Approve</button>

@@ -67,3 +67,10 @@ div.blue {
   color: blue;
   font-weight: bold;
 }
+i.icon {
+  line-height: 1.5;
+}
+div.delivery {
+  color: #d3d3d3;
+  font-weight: bold;
+}

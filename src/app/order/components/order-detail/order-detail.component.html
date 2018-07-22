@@ -39,13 +39,16 @@
       </div>
       <div class="col-12 text-center">
         <button type="button" class="btn btn-success mr-3 boxshadow"
-          *ngIf="order.Status=='Pending'" 
+          *ngIf="order.Status == 'Pending'" 
           (click)="showConfirmApproveOrder(order)">Approve</button>
+        <button type="button" class="btn btn-info mr-3 boxshadow"
+          *ngIf="order.Status == 'Approved'" 
+          (click)="showConfirmDeliveryOrder(order)">Delivery</button>
         <button type="button" class="btn btn-danger mr-3 boxshadow"
-          *ngIf="order.Status=='Pending'"
+          *ngIf="order.Status == 'Pending'"
           (click)="showConfirmDeclineOrder(order)">Decline</button>
         <button type="button" class="btn btn-secondary boxshadow" 
-          (click)="closeModal()">Cancel</button>
+          (click)="closeModal()">Close</button>
       </div>
     </form>
   </div>
@@ -74,6 +77,17 @@
 </swal>
 
 <swal
+  #deliverySwal
+  title="Delivery Order?"
+  text="You won't be able to revert this!"
+  type="warning"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="deliveryOrder(deliveringOrder)"
+  (cancel)="1">
+</swal>
+
+<swal
   #confirmSwal
   title="Approved"
   text="Order has been approved"
@@ -82,8 +96,15 @@
 
 <swal
   #cancelSwal
-  title="Decline"
+  title="Declined"
   text="Order has been declined"
+  type="success">
+</swal>
+
+<swal
+  #confirmDeliverySwal
+  title="Delivered"
+  text="Order has been delivered"
   type="success">
 </swal>
 

@@ -13,12 +13,15 @@ import { OrderService } from '../../services/order.service';
 export class OrderDetailComponent implements OnInit {
   @ViewChild('acceptSwal') private acceptSwal: SwalComponent;
   @ViewChild('declineSwal') private declineSwal: SwalComponent;
+  @ViewChild('deliverySwal') private deliverySwal: SwalComponent;
   @ViewChild('confirmSwal') private confirmSwal: SwalComponent;
   @ViewChild('cancelSwal') private cancelSwal: SwalComponent;
+  @ViewChild('confirmDeliverySwal') private confirmDeliverySwal: SwalComponent;
   @Input() order: Order;
   orderDetails: OrderDetails[] = [];
   acceptingOrder: Order;
   decliningOrder: Order;
+  deliveringOrder: Order;
 
   constructor(
     private activeModal: NgbActiveModal, 
@@ -51,6 +54,12 @@ export class OrderDetailComponent implements OnInit {
       this.declineSwal.show();
     }, 300);
   }
+
+  showConfirmDeliveryOrder() {
+    setTimeout(() => {
+      this.deliverySwal.show();
+    }, 300);
+  }
   
   acceptOrder() {
     this.order.Status = 'Approved'
@@ -78,6 +87,21 @@ export class OrderDetailComponent implements OnInit {
           (error) => console.log(error)
         )
       this.cancelSwal.show();
+      this.activeModal.close();
+    }, 300);
+  }
+
+  deliveryOrder() {
+    this.order.Status = 'Delivered'
+    setTimeout(() => {
+      this.orderService.edit(this.order)
+        .then(
+          (response) => {
+            this.getData();
+          },
+          (error) => console.log(error)
+        )
+      this.confirmDeliverySwal.show();
       this.activeModal.close();
     }, 300);
   }

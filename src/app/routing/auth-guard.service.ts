@@ -21,7 +21,6 @@ export class AuthGuardService implements CanActivate {
     
     if (token === undefined || token === null || token.role != expectedRole || 
       (tokenExpired.expires_in) < currentHour) {
-        alert('Expired session! Please login again!');
         this.router.navigate(['/login']);
         return false;
       }
