@@ -18,7 +18,7 @@
             <b>Date: </b>{{order.OrderDate | date:'medium'}}</div>
           <div class="col-12">
             <i class="mr-2 icon icon-credit-card"></i>
-            <b>PaymentType: </b>{{order.PaymentType == 0 ? 'Cash' : order.PaymentType == 1 ? 'Coupon' : 'Card'}}
+            <b>PaymentType: </b>{{order.PaymentType == 1 ? 'Cash' : order.PaymentType == 2 ? 'Coupon' : 'Card'}}
           </div>
           <!-- <div class="col-1 mt-1" *ngIf="order.PaymentType == 3">CouponItemId: {{order.CouponItemId}}</div>                                       -->
         </div>
